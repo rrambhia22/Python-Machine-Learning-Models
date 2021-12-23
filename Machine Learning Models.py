@@ -342,7 +342,7 @@ def knn_classifier(diabetes_dataset):
 
 
 
-#machine learning models 
+#accuracy for the machine learning models 
 def accuracy():
     d = {
         'Algorithm' : ['Linear Regression', 'Logistic Regression','Random Forest Classifier','SVC Linear','SVC Polynomial','SVC Gaussian','SVC Sigmoid','Naive Bayes Classifier','KNN Classifier'],
@@ -350,6 +350,8 @@ def accuracy():
     }
     data_table = pd.DataFrame(data=d)
     print("\nAccuracy Table:\n",data_table)
+
+
 
 #main
 if __name__=="__main__":
