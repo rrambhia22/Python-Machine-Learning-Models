@@ -187,9 +187,9 @@ def linear_regression(diabetes_dataset):
     print(confusion_matrix(y_test_classes, y_pred_classes))
     print("\nClassification Report is:\n")
     print(classification_report(y_test_classes, y_pred_classes))
-    acc = accuracy_score(y_true=y_test_classes, y_pred=y_pred_classes)*100
-    print("\nAccuracy is:",acc)
-    
+    acc1 = accuracy_score(y_true=y_test_classes, y_pred=y_pred_classes)*100
+    print("\nAccuracy is:",acc1)
+
 
 #logistic regression model
 def logistic_regression(diabetes_dataset):
@@ -205,9 +205,9 @@ def logistic_regression(diabetes_dataset):
     print(confusion_matrix(y_test, y_pred))
     print("\nClassification Report is:\n")
     print(classification_report(y_test, y_pred))
-    acc = accuracy_score(y_true=y_test, y_pred=y_pred)*100
-    print("\nAccuracy is:",acc)
-    
+    acc2 = accuracy_score(y_true=y_test, y_pred=y_pred)*100
+    print("\nAccuracy is:",acc2)
+
 
 #random forest classifier
 def randomforestclassifier(diabetes_dataset):
@@ -223,8 +223,9 @@ def randomforestclassifier(diabetes_dataset):
     print(confusion_matrix(y_test, y_pred))
     print("\nClassification Report is:\n")
     print(classification_report(y_test, y_pred))
-    acc = accuracy_score(y_true=y_test, y_pred=y_pred)*100
-    print("\nAccuracy is:",acc)
+    acc3 = accuracy_score(y_true=y_test, y_pred=y_pred)*100
+    print("\nAccuracy is:",acc3)
+
 
 
 #svc_linear
@@ -241,8 +242,9 @@ def svc_linear(diabetes_dataset):
     print(confusion_matrix(y_test, y_pred))
     print("\nClassification Report is:\n")
     print(classification_report(y_test, y_pred))
-    acc = accuracy_score(y_true=y_test, y_pred=y_pred)*100
-    print("\nAccuracy is:",acc)
+    acc4 = accuracy_score(y_true=y_test, y_pred=y_pred)*100
+    print("\nAccuracy is:",acc4)
+
 
 
 #svc_polynomial
@@ -259,8 +261,9 @@ def svc_polynomial(diabetes_dataset):
     print(confusion_matrix(y_test, y_pred))
     print("\nClassification Report is:\n")
     print(classification_report(y_test, y_pred))
-    acc = accuracy_score(y_true=y_test, y_pred=y_pred)*100
-    print("\nAccuracy is:",acc)
+    acc5 = accuracy_score(y_true=y_test, y_pred=y_pred)*100
+    print("\nAccuracy is:",acc5)
+
 
 
 #svc_gaussian
@@ -277,8 +280,9 @@ def svc_gaussian(diabetes_dataset):
     print(confusion_matrix(y_test, y_pred))
     print("\nClassification Report is:\n")
     print(classification_report(y_test, y_pred))
-    acc = accuracy_score(y_true=y_test, y_pred=y_pred)*100
-    print("\nAccuracy is:",acc)
+    acc6 = accuracy_score(y_true=y_test, y_pred=y_pred)*100
+    print("\nAccuracy is:",acc6)
+
 
 
 #svc_sigmoid
@@ -295,8 +299,9 @@ def svc_sigmoid(diabetes_dataset):
     print(confusion_matrix(y_test, y_pred))
     print("\nClassification Report is:\n")
     print(classification_report(y_test, y_pred))
-    acc = accuracy_score(y_true=y_test, y_pred=y_pred)*100
-    print("\nAccuracy is:",acc)
+    acc7 = accuracy_score(y_true=y_test, y_pred=y_pred)*100
+    print("\nAccuracy is:",acc7)
+
 
 
 #naive bayes classifier
@@ -313,8 +318,9 @@ def naive_bayes(diabetes_dataset):
     print(confusion_matrix(y_test, y_pred))
     print("\nClassification Report is:\n")
     print(classification_report(y_test, y_pred))
-    acc = accuracy_score(y_true=y_test, y_pred=y_pred)*100
-    print("\nAccuracy is:",acc)
+    acc8 = accuracy_score(y_true=y_test, y_pred=y_pred)*100
+    print("\nAccuracy is:",acc8)
+   
 
 
 #knn classifier
@@ -331,9 +337,19 @@ def knn_classifier(diabetes_dataset):
     print(confusion_matrix(y_test, y_pred))
     print("\nClassification Report is:\n")
     print(classification_report(y_test, y_pred))
-    acc = accuracy_score(y_true=y_test, y_pred=y_pred)*100
-    print("\nAccuracy is:",acc)
+    acc9 = accuracy_score(y_true=y_test, y_pred=y_pred)*100
+    print("\nAccuracy is:",acc9)
 
+
+
+#machine learning models 
+def accuracy():
+    d = {
+        'Algorithm' : ['Linear Regression', 'Logistic Regression','Random Forest Classifier','SVC Linear','SVC Polynomial','SVC Gaussian','SVC Sigmoid','Naive Bayes Classifier','KNN Classifier'],
+        'Accuracy' : ['83.12','82.47','81.82','81.82','79.22','79.22','79.22','79.22','72.08']
+    }
+    data_table = pd.DataFrame(data=d)
+    print("\nAccuracy Table:\n",data_table)
 
 #main
 if __name__=="__main__":
@@ -342,7 +358,7 @@ if __name__=="__main__":
     csv_data = csv_read_data()
 
     while(True):
-        user_input = input("\nSelect from the options below:\n 1. Data Description\n 2. Descriptive Analysis\n 3. Data Visualization\n 4. Predictive Analysis\n 5. Exit\n")
+        user_input = input("\nSelect from the options below:\n 1. Data Description\n 2. Descriptive Analysis\n 3. Data Visualization\n 4. Predictive Analysis\n 5. Accuracy Table\n 6. Exit\n")
 
         if user_input == '1':
             #data description
@@ -415,13 +431,16 @@ if __name__=="__main__":
                             break
 
                 elif model_user_input == '5':
-                    naive_bayes(csv_data)
+                   naive_bayes(csv_data)
 
                 elif model_user_input == '6':
                     knn_classifier(csv_data)
 
                 else:
                     break
+
+        elif user_input == '5':
+            accuracy()
 
         else:
             exit()
