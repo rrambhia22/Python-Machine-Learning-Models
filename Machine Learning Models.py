@@ -184,11 +184,14 @@ def linear_regression(diabetes_dataset):
     y_test_classes[y_test > cutoff] = 1    
 
     print("\nConfusion Matrix is:\n")
-    print(confusion_matrix(y_test_classes, y_pred_classes))
+    confusion_matrix1 = confusion_matrix(y_test_classes, y_pred_classes)
+    print(confusion_matrix1)
     print("\nClassification Report is:\n")
     print(classification_report(y_test_classes, y_pred_classes))
     acc1 = accuracy_score(y_true=y_test_classes, y_pred=y_pred_classes)*100
     print("\nAccuracy is:",acc1)
+
+    return confusion_matrix1
 
 
 #logistic regression model
@@ -202,11 +205,14 @@ def logistic_regression(diabetes_dataset):
     y_pred = regressor2.predict(X_test)
     
     print("\nConfusion Matrix is:\n")
-    print(confusion_matrix(y_test, y_pred))
+    confusion_matrix2 = confusion_matrix(y_test, y_pred)
+    print(confusion_matrix2)
     print("\nClassification Report is:\n")
     print(classification_report(y_test, y_pred))
     acc2 = accuracy_score(y_true=y_test, y_pred=y_pred)*100
     print("\nAccuracy is:",acc2)
+
+    return confusion_matrix2
 
 
 #random forest classifier
@@ -220,12 +226,14 @@ def randomforestclassifier(diabetes_dataset):
     y_pred = regressor3.predict(X_test)
     
     print("\nConfusion Matrix is:\n")
-    print(confusion_matrix(y_test, y_pred))
+    confusion_matrix3 = confusion_matrix(y_test, y_pred)
+    print(confusion_matrix3)
     print("\nClassification Report is:\n")
     print(classification_report(y_test, y_pred))
     acc3 = accuracy_score(y_true=y_test, y_pred=y_pred)*100
     print("\nAccuracy is:",acc3)
 
+    return confusion_matrix3
 
 
 #svc_linear
@@ -239,12 +247,14 @@ def svc_linear(diabetes_dataset):
     y_pred = regressor4a.predict(X_test)
     
     print("\nConfusion Matrix is:\n")
-    print(confusion_matrix(y_test, y_pred))
+    confusion_matrix4 = confusion_matrix(y_test, y_pred)
+    print(confusion_matrix4)
     print("\nClassification Report is:\n")
     print(classification_report(y_test, y_pred))
     acc4 = accuracy_score(y_true=y_test, y_pred=y_pred)*100
     print("\nAccuracy is:",acc4)
 
+    return confusion_matrix4
 
 
 #svc_polynomial
@@ -258,11 +268,14 @@ def svc_polynomial(diabetes_dataset):
     y_pred = regressor4b.predict(X_test)
     
     print("\nConfusion Matrix is:\n")
-    print(confusion_matrix(y_test, y_pred))
+    confusion_matrix5 = confusion_matrix(y_test, y_pred)
+    print(confusion_matrix5)
     print("\nClassification Report is:\n")
     print(classification_report(y_test, y_pred))
     acc5 = accuracy_score(y_true=y_test, y_pred=y_pred)*100
     print("\nAccuracy is:",acc5)
+
+    return confusion_matrix5
 
 
 
@@ -277,11 +290,14 @@ def svc_gaussian(diabetes_dataset):
     y_pred = regressor4c.predict(X_test)
     
     print("\nConfusion Matrix is:\n")
-    print(confusion_matrix(y_test, y_pred))
+    confusion_matrix6 = confusion_matrix(y_test, y_pred)
+    print(confusion_matrix6)
     print("\nClassification Report is:\n")
     print(classification_report(y_test, y_pred))
     acc6 = accuracy_score(y_true=y_test, y_pred=y_pred)*100
     print("\nAccuracy is:",acc6)
+
+    return confusion_matrix6
 
 
 
@@ -296,11 +312,14 @@ def svc_sigmoid(diabetes_dataset):
     y_pred = regressor4d.predict(X_test)
     
     print("\nConfusion Matrix is:\n")
-    print(confusion_matrix(y_test, y_pred))
+    confusion_matrix7 = confusion_matrix(y_test, y_pred)
+    print(confusion_matrix7)
     print("\nClassification Report is:\n")
     print(classification_report(y_test, y_pred))
     acc7 = accuracy_score(y_true=y_test, y_pred=y_pred)*100
     print("\nAccuracy is:",acc7)
+
+    return confusion_matrix7
 
 
 
@@ -315,11 +334,14 @@ def naive_bayes(diabetes_dataset):
     y_pred = regressor5.predict(X_test)
     
     print("\nConfusion Matrix is:\n")
-    print(confusion_matrix(y_test, y_pred))
+    confusion_matrix8 = confusion_matrix(y_test, y_pred)
+    print(confusion_matrix8)
     print("\nClassification Report is:\n")
     print(classification_report(y_test, y_pred))
     acc8 = accuracy_score(y_true=y_test, y_pred=y_pred)*100
     print("\nAccuracy is:",acc8)
+
+    return confusion_matrix8
    
 
 
@@ -334,11 +356,14 @@ def knn_classifier(diabetes_dataset):
     y_pred = regressor6.predict(X_test)
     
     print("\nConfusion Matrix is:\n")
-    print(confusion_matrix(y_test, y_pred))
+    confusion_matrix9 = confusion_matrix(y_test, y_pred)
+    print(confusion_matrix9)
     print("\nClassification Report is:\n")
     print(classification_report(y_test, y_pred))
     acc9 = accuracy_score(y_true=y_test, y_pred=y_pred)*100
     print("\nAccuracy is:",acc9)
+
+    return confusion_matrix9
 
 
 
@@ -353,6 +378,16 @@ def accuracy():
 
 
 
+#confusion matrix table of the ML models
+def confusionmatrix(confusion_matrix1,confusion_matrix2,confusion_matrix3,confusion_matrix4,confusion_matrix5,confusion_matrix6,confusion_matrix7,confusion_matrix8,confusion_matrix9):
+    d1 = {'Algorithm' : ['Linear Regression', 'Logistic Regression','Random Forest Classifier','SVC Linear','SVC Polynomial','SVC Gaussian','SVC Sigmoid','Naive Bayes Classifier','KNN Classifier'],
+          'Confusion Matrix' : [confusion_matrix1,confusion_matrix2,confusion_matrix3,confusion_matrix4,confusion_matrix5,confusion_matrix6,confusion_matrix7,confusion_matrix8,confusion_matrix9]        
+    }
+    data_table1 = pd.DataFrame(data=d1)
+    print("\Confusion Matrix Table:\n",data_table1)
+
+
+
 #main
 if __name__=="__main__":
     
@@ -360,7 +395,7 @@ if __name__=="__main__":
     csv_data = csv_read_data()
 
     while(True):
-        user_input = input("\nSelect from the options below:\n 1. Data Description\n 2. Descriptive Analysis\n 3. Data Visualization\n 4. Predictive Analysis\n 5. Accuracy Table\n 6. Exit\n")
+        user_input = input("\nSelect from the options below:\n 1. Data Description\n 2. Descriptive Analysis\n 3. Data Visualization\n 4. Predictive Analysis\n 5. Accuracy Table\n 6. Confusion Matrix Table\n 7. Exit\n")
 
         if user_input == '1':
             #data description
@@ -405,44 +440,47 @@ if __name__=="__main__":
                 model_user_input = input("\nSelect from the options below for predictive model:\n 1. Linear Regression\n 2. Logistic Regression\n 3. Random Forest Classifier\n 4. Support Vector Machine\n 5. Naive Bayes Classifier\n 6. KNN Classifier\n 7. Exit\n")
 
                 if model_user_input == '1':
-                    linear_regression(csv_data)
+                    confusion_matrix1 = linear_regression(csv_data)
 
                 elif model_user_input == '2':
-                    logistic_regression(csv_data)
+                    confusion_matrix2 = logistic_regression(csv_data)
 
                 elif model_user_input == '3':
-                    randomforestclassifier(csv_data)
+                    confusion_matrix3 = randomforestclassifier(csv_data)
             
                 elif model_user_input == '4':
                     while(True):
                         svm_input = input("\nSelect from the below options for SVM Classifier:\n 1. SVM Linear\n 2. SVM Polynomial\n 3. SVM Gaussian\n 4. SVM Sigmoid\n 5.Exit\n")
 
                         if svm_input == '1':
-                            svc_linear(csv_data)
+                            confusion_matrix4 = svc_linear(csv_data)
 
                         elif svm_input == '2':
-                            svc_polynomial(csv_data)
+                            confusion_matrix5 = svc_polynomial(csv_data)
 
                         elif svm_input == '3':
-                            svc_gaussian(csv_data)
+                            confusion_matrix6 = svc_gaussian(csv_data)
 
                         elif svm_input == '4':
-                            svc_sigmoid(csv_data)
+                            confusion_matrix7 = svc_sigmoid(csv_data)
 
                         else:
                             break
 
                 elif model_user_input == '5':
-                   naive_bayes(csv_data)
+                   confusion_matrix8 = naive_bayes(csv_data)
 
                 elif model_user_input == '6':
-                    knn_classifier(csv_data)
+                    confusion_matrix9 = knn_classifier(csv_data)
 
                 else:
                     break
 
         elif user_input == '5':
             accuracy()
+
+        elif user_input == '6':
+            confusionmatrix(confusion_matrix1,confusion_matrix2,confusion_matrix3,confusion_matrix4,confusion_matrix5,confusion_matrix6,confusion_matrix7,confusion_matrix8,confusion_matrix9)
 
         else:
             exit()
